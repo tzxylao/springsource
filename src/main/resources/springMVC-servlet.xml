@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+      http://www.springframework.org/schema/beans/spring-beans-3.0.xsd 
+      http://www.springframework.org/schema/context 
+      http://www.springframework.org/schema/context/spring-context.xsd 
+      http://www.springframework.org/schema/mvc 
+      http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd">
+
+	<!-- 启用springmvc注释功能 -->
+	<mvc:annotation-driven />
+	<!-- 自动扫描的包名 -->
+	<context:component-scan base-package="com.synway.synalarmruleweb.api" />
+	<!-- 扫描导出功能包 -->
+	<context:component-scan base-package="com.synway.synalarmruleweb.downLoad" />
+
+	<!-- jsp视图解释器 -->
+	<!-- <bean id="viewResolverCommon" -->
+	<!-- class="org.springframework.web.servlet.view.InternalResourceViewResolver"> -->
+	<!-- <property name="viewClass" -->
+	<!-- value="org.springframework.web.servlet.view.InternalResourceView" /> -->
+	<!-- <property name="prefix" value="/view/" /> -->
+	<!-- <property name="viewNames" value="*.html" /> -->
+	<!-- <property name="suffix" value="" /> -->
+	<!-- </bean> -->
+	
+	<!--视图解析器 -->
+	<bean id="viewResolver" class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">
+		<property name="suffix" value=".html" />
+		<property name="contentType" value="text/html;charset=UTF-8" />
+	</bean>
+
+	<!-- 静态资源的访问 -->
+	<mvc:resources mapping="/css/**" location="/css/" />
+	<mvc:resources mapping="/js/**" location="/js/" />
+	<mvc:resources mapping="/com/**" location="/com/" />
+	<!-- <mvc:resources mapping="/view/**" location="/view/" /> -->
+	<mvc:resources mapping="/data/**" location="/data/" />
+	<mvc:resources mapping="/fonts/**" location="/fonts/" />
+	<mvc:resources mapping="/images/**" location="/images/" />
+	<mvc:resources mapping="/utilPlugin/**" location="/utilPlugin/" />
+	<mvc:resources mapping="/sound/**" location="/sound/" />
+</beans> 
